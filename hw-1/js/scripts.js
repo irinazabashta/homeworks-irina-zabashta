@@ -29,7 +29,8 @@ console.log('index of substring \'string\': ' + indexSubstring);
 
 // 4. Найти положение второго пробела (“вручную” ничего не считать)
 
-let indexSecondSpace = string.lastIndexOf(' ');
+//let indexSecondSpace = string.lastIndexOf(' ');
+let indexSecondSpace = string.indexOf(' ', stringOf(' ') + 1); // начинаем поиск с позиции первого пробела + 1
 console.log('---------- 4 ----------');
 console.log('index of second space: ' + indexSecondSpace);
 
@@ -79,8 +80,9 @@ console.log('max: ' + max);
     // b. Получить случайное целое число от 0 до X. X - любое произвольное число.
 
 let randomNumber1 =  Math.round(Math.random() *100) / 100;
-let x = 10;
-let randomNumber2 = Math.round(Math.random() * x) + 0;
+let min = 0;
+let max = 10;
+let randomNumber2 = Math.round(Math.random() * (max-min)) + min;
 console.log('---------- 3 ----------');
 console.log('random number A: ' + randomNumber1);
 console.log('random number B from 0 to ' + x + ': ' + randomNumber2);
@@ -89,7 +91,8 @@ console.log('random number B from 0 to ' + x + ': ' + randomNumber2);
 
 let d = 0.6, e = 0.7;
 console.log('---------- 4 ----------');
-console.log('результат вычисления 0.6 + 0.7 = ' + Math.round((d + e) * 100) / 100);
+// console.log('результат вычисления 0.6 + 0.7 = ' + Math.round((d + e) * 100) / 100);
+console.log('результат вычисления 0.6 + 0.7 = ' + (d + e).toFixed(1));
 
 // 5. Получить число из строки ‘100$’
 
