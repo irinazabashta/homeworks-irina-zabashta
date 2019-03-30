@@ -48,8 +48,10 @@ console.log(car);
 
 console.log('---------- 4 ----------');
 let item = { name: 'Intel core i7', price: '100$', discount: '15%' };
-if ('discount' in item && parseFloat(item.discount)) {
-    item.priceWithDiscount = parseFloat(item.price) - parseFloat(item.price) * parseFloat(item.discount) / 100 + '$';
+// (item.discount) - полностью покрывает все проверки Because according to task we should check if property exist and it's not empty(mean not null, undefined, 0, "" Everything that would give false)
+if /*('discount' in item && parseFloat(item.discount))*/ (item.discount) {
+    let itemPrice = parseFloat(item.price), itemDiscount = parseFloat(item.discount;
+    item.priceWithDiscount = itemPrice - itemPrice * itemDiscount / 100 + '$';
     console.log('price with discount -> ' + item.priceWithDiscount);
 } else if (!('discount' in item) || !parseFloat(item.discount) || parseFloat(item.discount) === 0) {
     console.log('price without discount -> ' + item.price);
@@ -64,7 +66,8 @@ let product = {
 };
 let min = 10; // минимальная цена
 let max = 20; // максимальная цена
-if (parseFloat(product.price) >= min && parseFloat(product.price) <= max) {
+let productPrice = parseFloat(product.price);
+if (productPrice >= min && productPrice <= max) {
     console.log('product is ' + product.name);
 } else {
     console.log('product not found');
