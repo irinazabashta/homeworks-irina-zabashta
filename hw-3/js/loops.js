@@ -1,7 +1,7 @@
 // 1. На основе строки “i am in the easycode” сделать новую строку где первые буквы каждого слова будут в верхнем регистре. Использовать for или while.
 
 console.log('---------- 1 ----------');
-var string1 = 'i am in the easycode', stringResult1 = '';
+var string1 = 'i am in the easy code', stringResult1 = '';
 string1 = string1.trim();
 var stringLength1 = string1.length;
 
@@ -13,9 +13,14 @@ for (let i = 1; i < stringLength1; i++) {
         i++;
     }
 }
-
 console.log('Old string is ->', string1);
 console.log('New string is ->', stringResult1);
+
+// var stringArray = string1.split(' '); - разбиваем строку на массив по сепаратору(разделителю) пробел
+// for (let i = 0; i < stringArray.length; i++){
+//    stringArray[i] = stringArray[i][0].toUpperCase() + stringArray[i].slice(1); - затем увеличиваем в каждом слове первый символ, и дописываем оставшуюся строку
+//}
+//stringResult1 = stringArray.join(' '); - собираем строку с разделителем пробел
 
 // 2. Дана строка “tseb eht ma i”. Используя циклы, сделать строку-перевертыш (то есть последняя буква становится первой, предпоследняя - второй итд).
 
