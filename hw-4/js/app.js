@@ -76,7 +76,7 @@ guessNumber(number4);
 
 function guessNumber(number) {
     let min = 1, max = 10;
-    let randomNumber = Math.round(Math.random() * (max-min)) + min;
+    let randomNumber = Math.round(Math.random() * (max - min)) + min;
     if(number >= min && number <= max) {
         if(randomNumber === +number) {
             console.log('You win !!!');
@@ -131,25 +131,52 @@ var arrayResult7 = changeCollection(array71, array72);
 
 console.log('Array without first element ->', arrayResult7);
 
+// function changeCollection(...arrayCollection)
 function changeCollection() {
     let result = [];
+    // for(let i = 0; i < arrayCollection.length; i++)
     for(let i = 0; i < arguments.length; i++){
         arguments[i].splice(0, 1);
         result[i] = arguments[i];
+
+        // result.push(arguments[i].slice(1));
+        // or
+        // result.push(arrayCollection[i].slice(1));
     }
     return result;
 }
+
+let sumArray = [1,2,3,4,5];
+function sum() {
+
+}
+sum(...sumArray); // sum(1,2,3,4,5)
+
+let user = {
+    name: 'name',
+    age: 23
+};
+let additionalInfo = {
+    country: 'Ukrain',
+    city: 'Kiev'
+};
+let improvedUser = {
+    ...user,
+    ...additionalInfo
+};
 
 // 8. Создать функцию которая принимает массив пользователей, поле на которое хочу проверить и значение на которое хочу проверять. Проверять что все аргументы переданы. Возвращать новый массив с пользователями соответсвующие указанным параметрам.
 // funcGetUsers(users, “gender”, “male”); // [ {name: “Denis”, age: “29”, gender: “male”} , {name: “Ivan”, age: “20”, gender: “male”} ]
 
 console.log('---------- 8 ----------');
-var users = [ {name: 'Denis', age: 29, gender: 'male'},
+var users = [
+    {name: 'Denis', age: 29, gender: 'male'},
     {name: 'Ivan', age: 20, gender: 'male'},
-    {name: 'Ivan', age: 20, gender: 'male'},
-    {name: 'Ivan', age: 20, gender: 'male1'},
-    {name: 'Ivan111', age: 20, gender: 'male'},
-    {name: 'Ivan', age: 20, gender: 'male1'}];
+    {name: 'Sveta', age: 20, gender: 'female'},
+    {name: 'Sasha', age: 20, gender: 'male'},
+    {name: 'Katya', age: 20, gender: 'female'},
+    {name: 'Ivan', age: 20, gender: 'male1'}
+];
 var argument = 'gender';
 var userGender = 'male';
 var usersResult = [];
@@ -157,7 +184,7 @@ var usersResult = [];
 usersResult = funcGetUsers(users, argument, userGender);
 console.log('Users with gender - male', usersResult);
 
-function funcGetUsers(users, argument, userGender) {
+/*function funcGetUsers(users, argument, userGender) {
     let controlLenght = 3;
     let j = 0, arrayUsers = [];
     if(arguments.length === controlLenght) {
@@ -173,4 +200,15 @@ function funcGetUsers(users, argument, userGender) {
     } else {
         console.log('Something wrong with arguments');
     }
+}*/
+
+function funcGetUsers(users, propName, propValue) {
+    let filteredUsers = [];
+
+    for (let i = 0; i < users.length; i++) {
+        if (users[i][propName] === propValue) {
+            filteredUsers.push(users[i]);
+        }
+    }
+    return filteredUsers;
 }
