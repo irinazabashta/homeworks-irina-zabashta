@@ -38,7 +38,7 @@ let storage = {
     todos: []
 };
 
-function generateId() {
+/*function generateId() {
     const words = '0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
     let id = '';
 
@@ -48,6 +48,16 @@ function generateId() {
     }
 
     return id;
+}*/
+
+function generateId() {
+    const template = 'xxxx-xxxx-xxxx-xxxx';
+    const arrayFromTemplate = template.split('');
+
+    return arrayFromTemplate.reduce((init, char) => {
+        if (char === '-') return init += char;
+        return init += Math.floor(Math.random() * 10);
+    }, '');
 }
 
 function addNewTodoToStorage(title, text) {
@@ -94,6 +104,7 @@ function editTaskStorage(id, title, text) {
     storage.todos[taskIndex].title = title;
     storage.todos[taskIndex].text = text;
 
+    
 }
 
 // эти строки лучше выполнять в консоли браузера, когда вы сможете 
@@ -102,7 +113,3 @@ function editTaskStorage(id, title, text) {
 // console.log(storage.todos)
 
 // или можете практиковаться на storage.todos[0].id :)
-
-function isParent() {
-    
-}

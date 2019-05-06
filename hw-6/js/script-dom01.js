@@ -26,6 +26,8 @@ const elementsFirstDivDocBody = firstDivDocBody.children;
 console.log(firstDivDocBody);
 console.log(elementsFirstDivDocBody);
 
+const newArray = [];
 for (let i = 1; i < elementsFirstDivDocBody.length - 1; i++) {
-    console.log(elementsFirstDivDocBody[i]);
+    newArray.push(elementsFirstDivDocBody[i]);
 }
+console.log(newArray);

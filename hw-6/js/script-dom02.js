@@ -12,21 +12,21 @@ console.log(isParent(document.body.children[0], document.querySelector('mark')))
 console.log(isParent(document.querySelector('ul'), document.querySelector('mark')));
 
 function isParent(parent, child) {
-    if(parent.contains(child)) {
-        return true;
-    } else {
-        return false;
-    }
+    return parent.contains(child);
 }
 
 // 2. Получить список всех ссылок, которые не находятся внутри списка ul
 console.log('---------- 2 ----------');
 const links = document.links;
+const newLinksList = [];
 for(let link of links) {
     if(!link.closest('ul')) {
-        console.log(link);
+        newLinksList.push(link);
     }
 }
+console.log(newLinksList);
+/*const linkArray = Array.prototype.filter.call(links, (link) => !link.closest('ul'));
+console.log(linkArray);*/
 
 // 3. Найти элемент, который находится перед и после списка ul
 console.log('---------- 3 ----------');
