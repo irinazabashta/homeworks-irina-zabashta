@@ -43,19 +43,19 @@ btnGenerate.addEventListener('click', function(e) {
 // dropdown-menu должен закрыться. При клике на любой другой dropdown-item уже открытый
 // dropdown-menu должен закрываться а на тот который кликнули открываться.
 
-const mainMenu = document.querySelector('.menu');
+const dropdownItem = document.querySelectorAll('.dropdown-item');
+Array.prototype.forEach.call(dropdownItem, item =>
+    item.addEventListener('click', showDropdown)
+);
 
-mainMenu.addEventListener('click', ({target}) => {
-    const liDropdownItemOpen = mainMenu.querySelector('.open')
-    if (liDropdownItemOpen) {
-        liDropdownItemOpen.classList.remove('open');
+function showDropdown() {
+    const thisMenu = this.querySelector('.dropdown-menu');
+    const isClose = thisMenu.classList.contains('d-none');
+    const notCloseMenu = document.querySelectorAll('.dropdown-menu:not(.d-none)');
+    
+    Array.prototype.forEach.call(notCloseMenu, menu => menu.classList.add('d-none'));
+
+    if (isClose) {
+        thisMenu.classList.remove('d-none');
     }
-
-    const liDropdownItem = target.closest('li');
-    if (!liDropdownItem.classList.contains('open')) {
-        liDropdownItem.classList.add('open');
-
-    } else {
-        liDropdownItem.classList.remove('open');
-    }
-});
+}
