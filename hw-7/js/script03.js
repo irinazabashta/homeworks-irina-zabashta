@@ -40,3 +40,6 @@ elementMark.innerText += ' green';
 elementMark.classList.add('green');
 
 // 5. Отсортировать li внутри списка в обратном порядке (по тексту внутри)
+
+let li = Array.prototype.slice.call(document.querySelectorAll('ul li'), 0);
+li.sort((prev, next) => prev.innerText > next.innerText ? -1 : 1).forEach(el => elementUl.append(el));
