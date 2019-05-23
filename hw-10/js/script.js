@@ -26,9 +26,9 @@ console.log(minus()());
 
 console.log('---------- 1.2 ----------');
 
-function multiplyMaker(multiplierFirst = 1) {
+function multiplyMaker(multiplierFirst = 0) {
     let result = multiplierFirst;
-    return function (multiplierSecond = 1) {
+    return function (multiplierSecond = 0) {
         result *= multiplierSecond;
         return result;
     }
@@ -58,7 +58,6 @@ const stringModule = (function () {
     let str;
     function setString(string = '') {
         str = typeof string === 'number' ? String(string) : string;
-        return str;
     }
     function getString() {
         return str;
@@ -82,7 +81,7 @@ const stringModule = (function () {
     }
 })();
 
-console.log(stringModule.setString(12345));
+stringModule.setString(12345);
 console.log(stringModule.getString());
 console.log(stringModule.getLengthString());
 console.log(stringModule.getFlipString());
@@ -100,32 +99,45 @@ console.log('---------- 1.4 ----------');
 const calcModule = (function () {
     let x;
     function setValue(val = 0) {
-        x = typeof val === 'number' ? val : 'Передайте число';
+        x = checkValue(val);
         return this;
     }
     function addValue(val) {
+        val = checkValue(val);
         x += val;
         return this;
     }
     function multiplyValue(val) {
+        val = checkValue(val);
         x *= val;
         return this;
     }
     function subtractValue(val) {
+        val = checkValue(val);
         x -= val;
         return this;
     }
     function divideValue(val) {
+        val = checkValue(val);
         x /= val;
         return this;
     }
     function involuteValue(val) {
+        val = checkValue(val);
         x = Math.pow(x, val);
         return this;
     }
     function getValue() {
         x = +x.toFixed(2);
         return x;
+    }
+
+    function checkValue(val) {
+        if(typeof val === 'number') {
+            return val;
+        } else {
+            alert('Передайте число');
+        }
     }
 
     return {
