@@ -60,10 +60,12 @@ function getInfo(organisation) {
 
 console.log('---------- 2.1 ----------');
 
-const getSum = (...props) => {
+/*const getSum = (...props) => {
     if (!props.length) return 0;
     return props.reduce((prev, next) => prev + next);
-};
+};*/
+
+const getSum = (...props) => props.length ? props.reduce((prev, next) => prev + next) : 0;
 
 const sum = getSum(1, 2, 3, 4);
 console.log(`Sum is ${sum}`);
